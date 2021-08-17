@@ -2,16 +2,15 @@ import styled from "styled-components";
 
 export const NavGroup = styled.div`
   display: flex;
-  justify-content: center;
   gap: 10px;
-  align-items: stretch;
+  align-items: center;
   
-  ::after {
-    content: '';
-    border-left: solid 1px rgb(235, 235, 237);
-  }
+  ${({noBorder}) => noBorder ? "" : (`
+    ::after {
+        content: '';
+        border-left: solid 1px rgb(235, 235, 237);
+        height:15px;
+    }  
+  `)}
   
-  * {
-    align-self: stretch;
-  }
 `

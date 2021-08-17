@@ -8,11 +8,16 @@ import {
     faAlignLeft, faAlignRight, faLink
 } from '@fortawesome/free-solid-svg-icons'
 
-import {NavGroup} from "../Nav/NavGroup";
+import {NavGroup} from "./NavGroup";
 
 const StyledToolBar = styled.div`
   border-bottom: solid 1px rgb(235, 235, 237);
+  border-top: solid 1px rgb(235, 235, 237);
+  margin: 10px 0;
+
   padding: 10px;
+  
+  width: 100%;
   
   display: flex;
   align-items: center;
