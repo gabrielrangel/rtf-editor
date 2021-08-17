@@ -1,7 +1,12 @@
-function App() {
+import Grid from './Components/Grid'
+import {NavBar} from "./Components/Nav";
+import {Paper} from "./Components/Paper";
+
+export function App() {
   return (
-   'Olá Mundo'
+   <Grid>
+       <NavBar/>
+       <Paper/>
+   </Grid>
   );
 }
-
-export default App;
