@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import {EditorProvider} from "./Providers/EditorProvider";
+
 import {NavBar} from "./Components/Nav";
 import {Paper} from "./Components/Paper";
 
@@ -19,12 +21,11 @@ const StyledMain = styled.main`
 
 export function App() {
   return (
-      <>
+      <EditorProvider>
           <NavBar/>
-
           <StyledMain>
               <Paper/>
           </StyledMain>
-      </>
+      </EditorProvider>
   );
 }

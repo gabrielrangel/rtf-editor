@@ -1,10 +1,11 @@
 import styled from "styled-components";
+import {useEditor} from "../../Providers/EditorProvider";
 
 const StyledDiv = styled.div`
   content: '';
   
   margin: 20px;
-  padding: 20px;
+  padding: 50px;
   
   min-width: ${({zoom=1}) => `${2480*zoom}px`};
   min-height: ${({zoom=1}) => `${3508*zoom}px`};
@@ -22,7 +23,9 @@ const StyledDiv = styled.div`
 `
 
 export function Paper () {
+    const {state} = useEditor()
+
     return (
-        <StyledDiv contentEditable={true}  zoom={0.15}/>
+        <StyledDiv contentEditable={true}  zoom={state.zoom}/>
     )
 }

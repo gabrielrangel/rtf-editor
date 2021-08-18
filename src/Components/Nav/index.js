@@ -7,6 +7,7 @@ import {Toolbar} from "./Toolbar";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 
 import {faSearchMinus, faSearchPlus} from '@fortawesome/free-solid-svg-icons'
+import {useEditor} from "../../Providers/EditorProvider";
 
 
 const StyledNav =  styled.nav`
@@ -40,13 +41,15 @@ const StyledNav =  styled.nav`
 `
 
 export function NavBar () {
+    const {dispatch} = useEditor()
+
     return(
         <StyledNav>
             <strong>rtf editor</strong>
             <NavGroup noBorder>
                 <NavGroup>
-                    <FontAwesomeIcon icon={faSearchMinus}/>
-                    <FontAwesomeIcon icon={faSearchPlus}/>
+                    <FontAwesomeIcon icon={faSearchMinus} onClick={() => dispatch({type:'zoom', value:-.1})}/>
+                    <FontAwesomeIcon icon={faSearchPlus} onClick={() => dispatch({type:'zoom', value:+.1})}/>
                 </NavGroup>
                 <Button >Save</Button>
             </NavGroup>
