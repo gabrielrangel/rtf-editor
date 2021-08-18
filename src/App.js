@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import {EditorProvider} from "./Providers/EditorProvider";
+import {UseEditor} from "./Hooks/useEditor";
 
 import {NavBar} from "./Components/Nav";
 import {Paper} from "./Components/Paper";
@@ -8,7 +8,7 @@ import {Paper} from "./Components/Paper";
 const StyledMain = styled.main`
   box-sizing: border-box;
   min-height: 100vh;
-  padding-top: 140px;
+  padding: 20px 0;
 
   background: #ECE9E6;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
@@ -21,11 +21,11 @@ const StyledMain = styled.main`
 
 export function App() {
   return (
-      <EditorProvider>
+      <UseEditor>
           <NavBar/>
           <StyledMain>
               <Paper/>
           </StyledMain>
-      </EditorProvider>
+      </UseEditor>
   );
 }

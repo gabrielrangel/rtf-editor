@@ -1,11 +1,14 @@
+import {useRef} from "react";
+
 import styled from "styled-components";
-import {useEditor} from "../../Providers/EditorProvider";
+import {useEditor} from "../../Hooks/useEditor";
 
 const StyledDiv = styled.div`
   content: '';
   
   margin: 20px;
   padding: 50px;
+  padding-top: 140px;
   
   min-width: ${({zoom=1}) => `${2480*zoom}px`};
   min-height: ${({zoom=1}) => `${3508*zoom}px`};
@@ -20,12 +23,25 @@ const StyledDiv = styled.div`
   :focus-within{
     outline: solid 1px rgba(50, 50, 93, 0.25);
   }
+  
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  
+  div + div {
+    padding-top: 15px;
+  }
 `
 
 export function Paper () {
+    const pageRef = useRef()
     const {state} = useEditor()
+    const {zoom} = state
 
     return (
-        <StyledDiv contentEditable={true}  zoom={state.zoom}/>
+        <StyledDiv
+            ref={pageRef}
+            zoom={zoom}
+            contentEditable={true}
+        />
     )
 }

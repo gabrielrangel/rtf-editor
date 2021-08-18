@@ -7,18 +7,21 @@ import {Toolbar} from "./Toolbar";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 
 import {faSearchMinus, faSearchPlus} from '@fortawesome/free-solid-svg-icons'
-import {useEditor} from "../../Providers/EditorProvider";
+import {useEditor} from "../../Hooks/useEditor";
 
 
 const StyledNav =  styled.nav`
+  --width: ${({zoom=1}) => 2480*zoom}px;
+  --vw: ${()=>document.documentElement.clientWidth}px;
+  
   box-sizing: border-box;
   position: fixed;
-  background-color: rgb(255, 255, 255);
+  background-color: rgba(255, 255, 255,.8);
   box-shadow: 
     rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, 
     rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
   
-  width: calc(100vw - 80px);
+  min-width: var(--width);
   
   display: flex;
   justify-content: space-between;
@@ -30,7 +33,7 @@ const StyledNav =  styled.nav`
   z-index: 10;
   
   padding: 10px;
-  margin: 20px 40px;
+  margin: 20px calc((var(--vw) - var(--width))/2);
   border-radius: 8px;
   
   strong {
@@ -41,10 +44,11 @@ const StyledNav =  styled.nav`
 `
 
 export function NavBar () {
-    const {dispatch} = useEditor()
+    const {state, dispatch} = useEditor()
+    const {zoom} = state
 
     return(
-        <StyledNav>
+        <StyledNav zoom={zoom} >
             <strong>rtf editor</strong>
             <NavGroup noBorder>
                 <NavGroup>
