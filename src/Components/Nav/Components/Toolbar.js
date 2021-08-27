@@ -1,38 +1,8 @@
 import styled from "styled-components";
 
-import {
-    faBold, faItalic, faUnderline,
-    faListOl, faListUl, faAlignCenter, faAlignJustify,
-    faAlignLeft, faAlignRight, faLink
-} from '@fortawesome/free-solid-svg-icons'
-
-import {NavGroup} from "./NavGroup";
 import {ToolbarButton} from "./ToolbarButton";
-
-const buttons = [
-    [
-        {icon: faBold, tagName: 'strong'},
-        {icon: faItalic, tagName: 'i'},
-        {icon: faUnderline, tagName: 'u'}
-    ],
-
-    [
-        {icon: faListUl},
-        {icon: faListOl},
-    ],
-
-    [
-        {icon: faLink}
-    ],
-
-    [
-        {icon: faAlignRight},
-        {icon: faAlignCenter},
-        {icon: faAlignLeft},
-        {icon: faAlignJustify}
-    ],
-
-]
+import {NavGroup} from "../Styled/NavGroup";
+import {buttons} from "../Constants/buttons";
 
 const StyledToolBar = styled.div`
   padding: 10px;

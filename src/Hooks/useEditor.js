@@ -5,9 +5,10 @@ const EditorContext = createContext({})
 function reducer (state, action) {
     switch (action.type){
         case 'zoom':
-            let zoom = state.zoom + action.value
-            zoom = zoom > 0.1 ? zoom : 0.1
-            return {...state, zoom}
+            const {value, step} = action
+            const zoom = value ? value : state.zoom + step
+            console.log({value, step})
+            return isNaN(zoom)||zoom<.1 ? state : {...state, zoom}
         case 'content':
             return {...state, content: action.value}
         default:
@@ -20,7 +21,7 @@ const initialState = {
     content: ''
 }
 
-export function UseEditor(props) {
+export function EditorProvider(props) {
     const [state, dispatch] = useReducer(reducer, initialState);
 
     return (
